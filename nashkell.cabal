@@ -1,0 +1,67 @@
+cabal-version:      2.4
+name:               nashkell
+version:            0.1.0.0
+synopsis:           An algebraic-effects OCR pipeline with LLM-backed verification layers
+description:
+  Nashkell reads scanned documents (originally built around the declassified
+  John Nash / NSA correspondence), runs them through Tesseract OCR via a
+  Polysemy effect, and layers three LLM-backed verification passes on top:
+  a sanity check on OCR quality, a speculative annotation pass, and a
+  cross-reference check against real Game Theory literature. Code comments
+  are written in Classical Latin, enforced by the project's git hook.
+license:            BSD-3-Clause
+author:             Nashkell contributors
+maintainer:         nobody@example.com
+build-type:         Simple
+
+common warnings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates
+               -Wincomplete-uni-patterns -Wredundant-constraints
+
+library
+  import:           warnings
+  hs-source-dirs:   src
+  exposed-modules:  Nashkell.Effect.Ocr
+                     Nashkell.Interpreter.Tesseract
+                     Nashkell.Retry
+                     Nashkell.Llm.Effect
+                     Nashkell.Llm.Interpreter.Anthropic
+                     Nashkell.Pipeline
+  build-depends:    base >=4.14 && <5
+                   , polysemy
+                   , polysemy-plugin
+                   , text
+                   , bytestring
+                   , typed-process
+                   , directory
+                   , aeson
+                   , http-conduit
+                   , http-client
+                   , http-types
+                   , case-insensitive
+  default-language: Haskell2010
+  default-extensions: OverloadedStrings
+                       LambdaCase
+                       GADTs
+                       DataKinds
+                       TypeOperators
+                       FlexibleContexts
+                       TemplateHaskell
+                       TypeApplications
+                       ScopedTypeVariables
+  ghc-options:      -fplugin=Polysemy.Plugin
+
+executable nashkell
+  import:           warnings
+  hs-source-dirs:   app
+  main-is:          Main.hs
+  build-depends:    base >=4.14 && <5
+                   , nashkell
+                   , polysemy
+                   , polysemy-plugin
+                   , text
+  default-language: Haskell2010
+  default-extensions: OverloadedStrings
+                       LambdaCase
+                       TypeApplications
+  ghc-options:      -fplugin=Polysemy.Plugin

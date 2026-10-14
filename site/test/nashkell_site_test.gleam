@@ -25,7 +25,7 @@ pub fn every_section_is_on_the_page_and_in_the_jump_list_test() {
 pub fn the_page_says_what_is_not_verified_and_what_is_missing_test() {
   let h = html()
   assert string.contains(h, "not verified at the source")
-  assert string.contains(h, "all rights reserved")
+  assert string.contains(h, "all rights reserved for the code")
   assert string.contains(h, "it is not a result")
 }
 
@@ -59,4 +59,12 @@ pub fn a_drawing_is_the_same_each_time_test() {
   let assert [curve, ..] = first.curves
   assert drawings.path(curve) == drawings.path(curve)
   assert string.starts_with(drawings.path(curve), "M")
+}
+
+// The headline is the owner's, as he wrote it, and every picture carries all of its equations.
+pub fn the_headline_and_the_captions_test() {
+  let h = html()
+  assert string.contains(h, "GAME THEORY:")
+  assert string.contains(h, "The best game ever by Nash")
+  assert string.contains(h, "not the mathematician John Forbes Nash Jr.")
 }

@@ -1,99 +1,84 @@
-/* nashkell: a blackboard. The ground is the board's green; the lights are four chalks, and each
-   has one meaning: white for the code, yellow for the record, blue for the mask, red for what a
-   reader must be warned of. The drawings are one line each and take the chalk of their part. */
+/* nashkell, in the look of h0ffmann/closed-source (its cover follows the type and colours of the
+   cover of Hoppe's "Democracy: The God That Failed": a black field, the first half of the title in
+   yellow letters, a red band, the second half in black on paper). The same tokens, by the same
+   author. The body is a short mathematical paper: numbered sections, and statements labelled
+   Definition, Proposition, Remark. The pictures are equations, drawn in one line each. */
 :root {
-  --board: #10291F; --slate: #0B1E17; --line: #25483A;
-  --chalk: #F1F4EC; --dust: #A9BDB2;
-  --yellow: #F3D667; --blue: #8CCBEA; --red: #F29484;
-  --display: "Syne", system-ui, sans-serif; --text: "Literata", Georgia, serif; --data: "IBM Plex Mono", ui-monospace, monospace;
+  --paper: #F4EFE6; --surface: #EBE3D6; --ink: #141210; --muted: #5F5B56; --rule: #CFC8BC;
+  --black: #0F0E0D; --yellow: #F2C230; --red: #A3201C; --on-black: #F4EFE6;
+  --serif: 'EB Garamond', Garamond, Georgia, serif;
+  --display: 'Playfair Display', 'Bodoni 72', Didot, Georgia, serif;
+  --caps: 'Oswald', 'Arial Narrow', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #121110; --surface: #1C1B19; --ink: #F1EADF; --muted: #B4AEA6; --rule: #3A3734; --black: #050505; color-scheme: dark; }
 }
 * { box-sizing: border-box; }
-html { background: var(--board); color: var(--chalk); font: 400 19px/1.6 var(--text); -webkit-text-size-adjust: 100%; }
+html { background: var(--paper); color: var(--ink); font: 400 20px/1.6 var(--serif); -webkit-text-size-adjust: 100%; }
 body { margin: 0; }
-main { max-width: 1080px; margin: 0 auto; padding: 0 28px 80px; }
-a { color: inherit; text-decoration: underline; text-decoration-color: var(--dust); text-underline-offset: 3px; }
-a:hover { text-decoration-color: currentColor; }
-a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 3px; }
-p, li, dd { max-width: 66ch; }
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+p, li, dd { max-width: 68ch; }
 
-.cover { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 32px; align-items: center; padding: 56px 0 44px; border-bottom: 1px solid var(--line); }
-.where { margin: 0 0 22px; font: 400 14px/1.4 var(--data); color: var(--dust); }
-h1 { margin: 0; font: 800 clamp(40px, 14vw, 150px)/.88 var(--display); overflow-wrap: anywhere; letter-spacing: -.035em; }
-.epithet { margin: 14px 0 0; font: 600 clamp(22px, 3.4vw, 36px)/1.1 var(--display); color: var(--yellow); letter-spacing: -.01em; }
-.lede { margin: 22px 0 0; font-size: 20px; }
-.jump { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 26px; font: 400 14px/1.3 var(--data); }
-.jump a { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--dust); }
-.jump a:hover { color: var(--chalk); border-color: var(--dust); }
+/* The cover: black field, yellow letters; a red band; then paper. */
+.cover .field { background: var(--black); color: var(--on-black); padding: 34px max(16px, calc((100% - 1040px) / 2 + 16px)) 40px; }
+.where { margin: 0 0 26px; font: 400 14px/1.4 var(--mono); color: #B4AEA6; }
+.where a { text-decoration-color: var(--yellow); }
+h1 { margin: 0; line-height: .95; }
+h1 .head { display: block; font: 600 clamp(52px, 11vw, 132px)/.95 var(--caps); letter-spacing: .01em; color: var(--yellow); }
+h1 .tail { display: block; margin-top: 10px; font: 900 clamp(30px, 5.4vw, 64px)/1.02 var(--display); color: var(--on-black); }
+.cover .band { background: var(--red); color: #F4EFE6; padding: 10px max(16px, calc((100% - 1040px) / 2 + 16px)); font: 500 15px/1.4 var(--caps); letter-spacing: .08em; text-transform: uppercase; }
+.cover .paper { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; max-width: 1072px; margin: 0 auto; padding: 34px 16px 30px; border-bottom: 3px double var(--rule); }
+.lede p { margin: 0 0 14px; }
+.jump { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 18px; font: 500 14px/1.5 var(--caps); letter-spacing: .04em; }
+.jump a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+.jump a:hover { border-color: var(--red); }
 
-.drawing { display: block; background: currentColor; mask-repeat: no-repeat; mask-position: center; mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; -webkit-mask-size: contain; }
-.cover .drawing { width: 100%; aspect-ratio: 4 / 3; color: var(--chalk); }
-.part .drawing { float: right; width: min(240px, 38%); aspect-ratio: 16 / 11; margin: 0 0 14px 28px; }
+/* Two plots side by side on the cover, each in a broken frame, its equations as its caption. */
+.cover-plots { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-content: start; }
+.cover-plot, .plot { position: relative; margin: 0; padding: 18px 16px 14px; }
+.cover-plot::before, .plot::before, .cover-plot::after, .plot::after { content: ""; position: absolute; width: 30px; height: 30px; border-color: var(--red); border-style: solid; }
+.cover-plot::before, .plot::before { top: 0; left: 0; border-width: 2px 0 0 2px; }
+.cover-plot::after, .plot::after { right: 0; bottom: 0; border-width: 0 2px 2px 0; }
+svg { display: block; width: 100%; height: auto; aspect-ratio: 1; }
+svg path { fill: none; stroke: var(--ink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+figcaption strong { display: block; margin-top: 6px; font: italic 400 18px/1.3 var(--serif); }
+.eqs { list-style: none; margin: 6px 0 0; padding: 0; }
+.eqs li { margin: 0 0 3px; }
+.eqs code { font: 400 12.5px/1.45 var(--mono); color: var(--muted); white-space: pre-wrap; }
+.plots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; margin: 24px 0; }
 
-.part { padding: 52px 0 6px; border-bottom: 1px solid var(--line); }
-.part::after { content: ""; display: block; clear: both; }
-h2 { margin: 0 0 18px; font: 800 clamp(30px, 5vw, 52px)/1 var(--display); letter-spacing: -.025em; }
-.part.yellow h2, .part.yellow .drawing { color: var(--yellow); }
-.part.blue h2, .part.blue .drawing { color: var(--blue); }
-.part.red h2 { color: var(--red); }
-.steps { padding-left: 1.3em; }
-.steps li { margin: 0 0 8px; padding-left: 6px; }
-.steps li::marker { font: 500 16px var(--data); color: var(--dust); }
-
-.quote { margin: 26px 0; padding: 2px 0 2px 20px; border-left: 3px solid var(--dust); max-width: 66ch; }
+/* The paper: numbered sections, labelled statements. */
+main { max-width: 1072px; margin: 0 auto; padding: 0 16px 70px; }
+.part { padding: 40px 0 10px; border-bottom: 1px solid var(--rule); }
+h2 { margin: 0 0 18px; font: 900 clamp(28px, 4.2vw, 44px)/1.08 var(--display); }
+h2 .num { color: var(--red); font: 600 .8em var(--caps); margin-right: 6px; }
+.statement p { margin: 0 0 14px; }
+.label { font: 600 15px/1 var(--caps); letter-spacing: .06em; text-transform: uppercase; color: var(--red); }
+.statement.remark .label { color: var(--muted); }
+.statement.proposition p { font-style: italic; }
+.warn { color: var(--red); }
+.quote { margin: 18px 0 22px; padding-left: 18px; border-left: 3px solid var(--red); max-width: 68ch; }
 .quote blockquote { margin: 0; font-style: italic; }
-.quote figcaption { margin-top: 8px; font: 400 14px/1.4 var(--data); color: var(--dust); }
-.warn { padding: 14px 18px; border: 1px dashed var(--red); border-radius: 14px; color: var(--red); font-size: 17px; }
-
-.matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 26px 0; max-width: 760px; border: 2px solid var(--chalk); border-radius: 18px; overflow: hidden; }
-.cell { display: flex; flex-direction: column; gap: 10px; min-height: 132px; padding: 18px 20px; border: 1px solid var(--line); background: var(--slate); }
-.cell .moves { font: 400 13px/1.4 var(--data); color: var(--dust); }
-.cell strong { font: 600 clamp(19px, 2.4vw, 25px)/1.15 var(--display); }
-.cell.good strong { color: var(--yellow); }
-.cell.fair strong { color: var(--chalk); }
+.quote figcaption { margin-top: 6px; font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.matrix { display: grid; grid-template-columns: 1fr 1fr; margin: 20px 0 24px; max-width: 760px; border: 2px solid var(--ink); }
+.cell { display: flex; flex-direction: column; gap: 8px; min-height: 120px; padding: 16px 18px; border: 1px solid var(--rule); }
+.cell .moves { font: 400 12.5px/1.4 var(--mono); color: var(--muted); }
+.cell strong { font: 700 clamp(19px, 2.3vw, 24px)/1.15 var(--display); }
+.cell.good { background: var(--black); color: var(--yellow); }
+.cell.good .moves { color: #B4AEA6; }
 .cell.bad strong, .cell.worst strong { color: var(--red); }
-
-.pairs { display: grid; grid-template-columns: max-content max-content; gap: 6px 22px; margin: 22px 0; font: 400 17px/1.4 var(--data); }
-.pairs dt { color: var(--dust); }
-.pairs dt::after { content: "  →"; color: var(--line); }
-.pairs dd { margin: 0; color: var(--blue); }
-pre { margin: 22px 0; padding: 18px 20px; overflow-x: auto; background: var(--slate); border: 1px solid var(--line); border-radius: 14px; font: 400 15px/1.55 var(--data); color: var(--dust); }
-footer { padding: 36px 0 0; font-size: 16px; color: var(--dust); }
+.pairs { display: grid; grid-template-columns: max-content max-content; gap: 4px 22px; margin: 16px 0 20px; font: 400 16px/1.4 var(--mono); }
+.pairs dt { color: var(--muted); }
+.pairs dd { margin: 0; color: var(--red); }
+pre { margin: 16px 0; padding: 14px 16px; overflow-x: auto; background: var(--surface); border-left: 3px solid var(--red); font: 400 14px/1.55 var(--mono); }
+footer { padding: 30px 0 0; font-size: 16px; color: var(--muted); }
 
 @media (max-width: 760px) {
-  html { font-size: 17px; }
-  main { padding: 0 16px 56px; }
-  .cover { grid-template-columns: 1fr; padding-top: 36px; }
-  .cover .drawing { max-width: 300px; }
-  .part .drawing { float: none; width: 200px; margin: 0 0 18px; }
+  html { font-size: 18px; }
+  .cover .paper { grid-template-columns: 1fr; }
+  .plots { grid-template-columns: 1fr; }
   .matrix { grid-template-columns: 1fr; }
-  pre { font-size: 13px; }
 }
-
-/* Drawn with equations: each picture is its curves, in yellow chalk on a darker board, with the
-   equations under it in mono, as a calculator would show them. */
-.plots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin: 26px 0; }
-/* A line, not a box: each drawing stands in a broken frame, two corners in chalk. */
-.plot { position: relative; margin: 0; padding: 22px 22px 18px; }
-.plot::before, .plot::after { content: ""; position: absolute; width: 34px; height: 34px; border-color: var(--dust); border-style: solid; }
-.plot::before { top: 0; left: 0; border-width: 2px 0 0 2px; }
-.plot::after { right: 0; bottom: 0; border-width: 0 2px 2px 0; }
-.plot svg { display: block; width: 100%; height: auto; aspect-ratio: 1; }
-.plot path { fill: none; stroke: var(--yellow); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-#draw-boat path { stroke: #F5A35C; }
-#draw-sea path { stroke: var(--blue); }
-.plot figcaption { display: flex; flex-direction: column; gap: 4px; margin: 10px 0 0; font-size: 16px; }
-.plot figcaption strong { font: 600 20px/1.2 var(--display); }
-.plot figcaption span { color: var(--dust); }
-.plot pre { margin: 12px 0 0; padding: 12px 14px; font-size: 13px; white-space: pre-wrap; }
-@media (max-width: 760px) { .plots { grid-template-columns: 1fr; } }
-
-/* The cover's picture: the flame over the sea, in a broken frame, as picasso's covers have one. */
-.cover-plot { position: relative; margin: 0; padding: 26px; }
-.cover-plot svg { display: block; width: 100%; height: auto; aspect-ratio: 1; }
-.cover-plot path { fill: none; stroke: var(--chalk); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.cover-plot .corner { position: absolute; width: 44px; height: 44px; border-color: var(--yellow); border-style: solid; }
-.cover-plot .tl { top: 0; left: 0; border-width: 3px 0 0 3px; }
-.cover-plot .br { right: 0; bottom: 0; border-width: 0 3px 3px 0; }
-.cover-plot figcaption { margin-top: 6px; font: 400 13px/1.4 var(--data); color: var(--dust); text-align: right; }
-/* The title runs wide: the cover's picture starts under it, so the frame does not touch a letter. */
-@media (min-width: 761px) { .cover-plot { align-self: end; margin-top: 130px; } }

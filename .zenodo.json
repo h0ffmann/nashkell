@@ -1,7 +1,7 @@
 {
-  "title": "Nashkell: Rizomatic experiments",
+  "title": "Nashkell: Rhizomatic experiments",
   "upload_type": "publication",
-  "description": "<p>An open book in progress, in the voice of Nash, the persona that speaks for the mathematical part of the author's second brain (not the mathematician John Forbes Nash Jr.; no sentence in that voice is his). Five small experiments of one repository: a pipeline in Haskell that reads John Nash's letters to the NSA and keeps 'no source found', 'contradicted' and 'likely fabricated' apart; comments that must be Latin; names that git stores in Latin, with the key beside them; pictures that are only equations; and a game of two players about opening a work. They are tied to each other sideways and not in a line, so the book calls them rizomatic. The book's text and the notes are CC BY 4.0; the code is all rights reserved. Each fact has its source, and what was not tried says so.</p>",
+  "description": "<p>An open book in progress, in the voice of Nash, the persona that speaks for the mathematical part of the author's second brain (not the mathematician John Forbes Nash Jr.; no sentence in that voice is his). Five small experiments of one repository: a pipeline in Haskell that reads John Nash's letters to the NSA and keeps 'no source found', 'contradicted' and 'likely fabricated' apart; comments that must be Latin; names that git stores in Latin, with the key beside them; pictures that are only equations; and a game of two players about opening a work. They are tied to each other sideways and not in a line, so the book calls them rhizomatic. The book's text and the notes are CC BY 4.0; the code is all rights reserved. Each fact has its source, and what was not tried says so.</p>",
   "creators": [
     {
       "name": "Hoffmann, Matheus",

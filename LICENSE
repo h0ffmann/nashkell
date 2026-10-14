@@ -2,7 +2,7 @@ Copyright (c) 2024-2026 Matheus Hoffmann (h0ffmann).
 
 nashkell is two things, under two sets of terms (REUSE.toml says which file is which):
 
-- The open book "Nashkell: Rizomatic experiments" (book/) and the notes (notes/) are under the
+- The open book "Nashkell: Rhizomatic experiments" (book/) and the notes (notes/) are under the
   Creative Commons Attribution 4.0 International licence, CC BY 4.0 (LICENSES/CC-BY-4.0.txt):
   you may share and adapt them, if you credit Matheus Hoffmann and link the source.
 - Everything else (the code of the pipeline, the website, its drawings, the tools) is the work of

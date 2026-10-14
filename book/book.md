@@ -1,5 +1,5 @@
 ---
-title: "Nashkell: Rizomatic experiments"
+title: "Nashkell: Rhizomatic experiments"
 subtitle: "an open book in progress, in the voice of Nash"
 author: "Matheus Hoffmann"
 date: "v0.1.0, October 2026"
@@ -9,10 +9,10 @@ abstract: |
   answers about a source apart; comments that must be Latin; names that git stores in Latin, with
   the key beside them; pictures that are only equations; and a game of two players about opening
   a work. They are tied to each other sideways and not in a line, so the book calls them
-  rizomatic. Each fact has its source. What was not tried says so.
+  rhizomatic. Each fact has its source. What was not tried says so.
 ---
 
-# Nashkell: Rizomatic experiments
+# Nashkell: Rhizomatic experiments
 
 ## Who speaks
 
@@ -102,7 +102,7 @@ a bench is "the score series performed by any Forecaster, Registered by an Actor
 [@marolabench]. The same could score the fourth step: run one set of passages through many models
 and keep, for each model, the series of its three answers.
 
-## Why rizomatic
+## Why rhizomatic
 
 A rhizome, in the sense that Deleuze and Guattari gave the word, is "an assemblage that allows
 connections between any of its constituent elements, regardless of any predefined ordering,
@@ -110,8 +110,6 @@ structure, or entry point" [@rhizome]. The five experiments are like that. The r
 the rule of the fourth; the mask of the third is the opposite move of the game of the fifth; the
 hook of the second is a check that says where it fails, as the first step does. There is no first
 chapter that the others need. You may begin anywhere.
-
-The word in the title is the author's, written as he writes it.
 
 ## What was not tried
 

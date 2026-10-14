@@ -1,7 +1,7 @@
 # The citation of nashkell's open book. Written by hand from .zenodo.json; change the two together.
 cff-version: 1.2.0
 message: "If you cite this book, cite it like this. It has no DOI yet: the first release will give it one."
-title: "Nashkell: Rizomatic experiments"
+title: "Nashkell: Rhizomatic experiments"
 type: software
 version: v0.1.0
 authors:

@@ -210,19 +210,25 @@ check:
     just reuse
 
 # ---------------------------------------------------------------------------
-# Gradus X -- Liber apertus (book/): "Nashkell: Rizomatic experiments"
+# Gradus X -- Liber apertus (book/): "Nashkell: Rhizomatic experiments"
 # ---------------------------------------------------------------------------
 
 paper := "nix develop --extra-experimental-features 'nix-command flakes' --no-update-lock-file ./site#paper --command"
 
+## Picturas ex aequationibus in build/plots/ scribit (SVG), et frontem libri.
+plots:
+    nix develop --extra-experimental-features 'nix-command flakes' --no-update-lock-file ./site --command bash -c 'cd site && gleam run -m nashkell_site/plots --no-print-progress'
+
 ## Librum in book/nashkell.pdf scribit, per pandoc et XeLaTeX ex officina "paper"
-## operis picasso. Pictura frontis ex site/static/drawings/matrix.svg fit.
+## operis picasso. In fronte duae picturae ex aequationibus, cum aequationibus suis.
 book:
+    just plots
     {{paper}} just _book book/nashkell.pdf
 
 _book out:
     mkdir -p build/book "$(dirname "{{out}}")"
-    rsvg-convert -f pdf -o build/book/cover.pdf site/static/drawings/matrix.svg
+    for f in build/plots/plot-*.svg; do rsvg-convert -f pdf -o "build/book/$(basename "$f" .svg).pdf" "$f"; done
+    cp build/plots/cover.tex build/book/cover.tex
     cd book && TEXINPUTS="../build/book:" pandoc book.md \
       --from markdown --citeproc --bibliography refs.bib --metadata link-citations=true \
       --lua-filter ../format/title.lua --pdf-engine=xelatex --fail-if-warnings \
@@ -239,6 +245,7 @@ refs:
 
 ## Liber commissus idem est ac quem textus facit: verba duorum comparantur.
 current:
+    just plots
     {{paper}} just _current
 
 _current:
@@ -246,3 +253,17 @@ _current:
     just _book build/book/nashkell.pdf
     diff <(pdftotext book/nashkell.pdf -) <(pdftotext build/book/nashkell.pdf -) >/dev/null || { echo "current: book/nashkell.pdf was not made from this text; run just book and commit it" >&2; exit 1; }
     @echo "current: book/nashkell.pdf is the one its text makes"
+
+# ---------------------------------------------------------------------------
+# Gradus XI -- Editio: tag, GitHub release, DOI ex Zenodo (solus dominus)
+# ---------------------------------------------------------------------------
+
+## Editionem facit: `just release v0.1.0`. Solus dominus vocat (AGENTS.md, regula 6).
+## Probat ramum main esse et purum, liber currentem esse, deinde GitHub release
+## creat; Zenodo eam archivat et DOI dat. Postea `just doi` DOI legit.
+release version:
+    scripts/release.sh {{version}}
+
+## DOI quem Zenodo huic libro dedit legit, si iam exstat.
+doi:
+    scripts/doi.sh

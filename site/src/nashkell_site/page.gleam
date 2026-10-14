@@ -6,6 +6,8 @@ import gleam/list
 import lustre/attribute.{attribute as a}
 import lustre/element.{type Element}
 import lustre/element/html
+import lustre/element/svg
+import nashkell_site/drawings
 
 pub const repo = "https://github.com/h0ffmann/nashkell"
 
@@ -20,6 +22,7 @@ pub const sections = [
   #("obfuscation", "a study of obfuscation, with Git and Latin"),
   #("latin", "comments in Latin"),
   #("faults", "what is not right in it"),
+  #("equations", "drawn with equations"),
   #("record", "the record"),
 ]
 
@@ -280,22 +283,19 @@ fn latin() -> Element(msg) {
 
 fn faults() -> Element(msg) {
   section("faults", "red", [
-    p("read at commit " <> read_at <> ". a reader should know:"),
+    p("a reader should know:"),
     html.ul([], [
       html.li([], [
-        html.text(
-          "the README and the justfile name files that are not in the repository: the folder .githooks/, tools/biblical-commit.sh and golden/sample.png.",
-        ),
+        html.text("the Haskell pipeline has no tests."),
       ]),
       html.li([], [
         html.text(
           "the justfile says of itself, in Latin, that it was not run where it was written.",
         ),
       ]),
-      html.li([], [html.text("there are no tests, and two commits.")]),
       html.li([], [
         html.text(
-          "there is no licence file, so no licence is given. the code can be read; it cannot be reused.",
+          "the hook that checks the Latin of comments was missing, and was written again on 14 October 2026 from the README's own description of it. two recipes that called a script the repository never had were taken out.",
         ),
       ]),
       html.li([], [
@@ -303,6 +303,54 @@ fn faults() -> Element(msg) {
       ]),
     ]),
   ])
+}
+
+fn equations() -> Element(msg) {
+  section("equations", "yellow", [
+    p(
+      "four things of the author's profile, each drawn only with equations, the way people draw with the graphing calculator Desmos. the page computes every curve when it is built, so each picture is exactly its equations. type the lines into a graphing calculator to draw them again.",
+    ),
+    html.div(
+      [attribute.class("plots")],
+      list.map(drawings.all(), fn(d) {
+        html.figure([attribute.class("plot"), attribute.id("draw-" <> d.name)], [
+          svg.svg(
+            [
+              a("viewBox", "0 0 300 300"),
+              a("role", "img"),
+              a("aria-label", d.title <> ": " <> d.said),
+            ],
+            list.map(d.curves, fn(c) { svg.path([a("d", drawings.path(c))]) }),
+          ),
+          html.figcaption([], [
+            html.strong([], [html.text(d.title)]),
+            html.span([], [html.text(d.said)]),
+          ]),
+          html.pre([], [
+            html.code([], [
+              html.text(
+                d.curves |> list.map(drawings.equation) |> string_join("\n"),
+              ),
+            ]),
+          ]),
+        ])
+      }),
+    ),
+    html.p([], [
+      html.text("the four are from "),
+      link("https://h0ffmann.github.io/h0ffmann/", "the author's profile"),
+      html.text(
+        ": the sea of his work, the flame of \"the aquatic prometheus\", the orange boat of its icon, and Ouroboros, the name of the friends' research.",
+      ),
+    ]),
+  ])
+}
+
+fn string_join(items: List(String), sep: String) -> String {
+  case items {
+    [] -> ""
+    [first, ..rest] -> list.fold(rest, first, fn(acc, s) { acc <> sep <> s })
+  }
 }
 
 fn record() -> Element(msg) {
@@ -313,6 +361,15 @@ fn record() -> Element(msg) {
       html.text(". the ideas behind it are in "),
       link(repo <> "/blob/main/notes/index.md", "three notes"),
       html.text(", one idea each."),
+    ]),
+    html.p([], [
+      html.text(
+        "all rights reserved: the code, the notes, this page and its drawings are ",
+      ),
+      link("https://h0ffmann.github.io/h0ffmann/", "matheus hoffmann"),
+      html.text("'s. read it, cite it; do not copy it. "),
+      link(repo <> "/blob/main/LICENSE", "the licence"),
+      html.text("."),
     ]),
     html.p([], [
       html.text(
@@ -361,6 +418,7 @@ pub fn view() -> Element(msg) {
     obfuscation(),
     latin(),
     faults(),
+    equations(),
     record(),
     foot(),
   ])
@@ -392,6 +450,23 @@ pub fn document() -> Element(msg) {
         ),
       ]),
       html.link([attribute.rel("stylesheet"), attribute.href("style.css")]),
+      html.meta([a("property", "og:title"), attribute.content("nashkell")]),
+      html.meta([
+        a("property", "og:description"),
+        attribute.content("game theory, in Haskell, with Latin on top"),
+      ]),
+      html.meta([
+        a("property", "og:image"),
+        attribute.content("https://h0ffmann.github.io/nashkell/og.png"),
+      ]),
+      html.meta([
+        a("property", "og:url"),
+        attribute.content("https://h0ffmann.github.io/nashkell/"),
+      ]),
+      html.meta([
+        attribute.name("twitter:card"),
+        attribute.content("summary_large_image"),
+      ]),
     ]),
     html.body([], [view()]),
   ])

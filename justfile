@@ -13,7 +13,6 @@ set shell := ["bash", "-euo", "pipefail", "-c"]
 
 # Variabiles: mutabiles secundum tuum systema, si necesse est.
 tessdata_lang := "eng"
-image_default := "golden/sample.png"
 repo_name := "nashkell"
 
 # ---------------------------------------------------------------------------
@@ -67,7 +66,7 @@ clean:
 ## Exsequitur programma nashkell super imaginem datam. Clavis API
 ## Anthropic ex re systematis (ANTHROPIC_API_KEY) legitur -- videndum
 ## prius quam hoc mandatum vocatur.
-run image=image_default:
+run image:
     nix develop --command cabal run nashkell -- {{image}}
 
 # ---------------------------------------------------------------------------
@@ -121,15 +120,6 @@ first-commit:
     git commit -m "Sic Mundus Creatus Est"
     @echo "Primum commit factum est."
 
-## Committit id quod iam "staged" est per instrumentum biblicum, quod
-## phrasin Latinam eligit secundum naturam mutationis (creatio,
-## purificatio, transfiguratio, apocalypsis, vel genesis generalis).
-sic pool="":
-    bash tools/biblical-commit.sh {{pool}}
-
-## Ostendit omnes categorias phrasium biblicarum et numerum earum.
-sic-list:
-    bash tools/biblical-commit.sh --list
 
 # ---------------------------------------------------------------------------
 # Gradus V -- GitHub: creatio repositorii et missio (push)
@@ -190,3 +180,29 @@ _site:
     cd site && gleam format --check src test && gleam test
     cd site && rm -rf dist && mkdir -p dist && gleam run -m nashkell_site/prerender --no-print-progress > dist/index.html && cp -R static/. dist/
     @echo "site: site/dist"
+
+# ---------------------------------------------------------------------------
+# Gradus IX -- Probationes (eaedem in CI): textus, notae, licentiae
+# ---------------------------------------------------------------------------
+
+md := "nix develop --extra-experimental-features 'nix-command flakes' --no-update-lock-file ./site#md --command"
+
+## Tres analysatores super omnia tabularia Markdown: structura, verba, nexus.
+## `just md-quality --online` etiam nexus interretiales probat.
+md-quality *args:
+    {{md}} scripts/md-quality.sh {{args}}
+
+## Notae (notes/) suas regulas servant.
+notes:
+    scripts/notes-check.sh
+
+## Omne tabularium licentiam et auctorem habet (REUSE.toml).
+reuse:
+    {{md}} reuse lint
+
+## Quod CI exsequitur, ante petitionem (pull request) vocandum.
+check:
+    just md-quality --self-test
+    just md-quality
+    just notes
+    just reuse

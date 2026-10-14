@@ -1,0 +1,20 @@
+// markdownlint-cli2: the structure of every Markdown file (`just md-quality`).
+{
+  "config": {
+    "default": true,
+    // Line length is a wrap habit, not a defect: a table row and a long link cannot wrap.
+    "MD013": false,
+    // The README opens with a centred header in HTML, in the manner of picasso's README.
+    "MD033": false,
+    // A paper starts with front matter, and its `title:` is metadata; the page keeps one heading.
+    "MD025": { "front_matter_title": "" },
+    "MD041": false,
+    // A reference and a quoted address are text to copy: a bare URL stays bare.
+    "MD034": false,
+    // Tables are not padded into columns.
+    "MD060": false
+  },
+  // The files are given by scripts/md-quality.sh (the tracked ones). No "globs" here: the tool
+  // would add them to that list and read the packages a site's build downloads.
+  "ignores": ["build/**", "**/site/build/**", "**/site/dist/**", "tools/*/build/**"]
+}

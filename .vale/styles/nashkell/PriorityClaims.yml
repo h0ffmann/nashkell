@@ -1,0 +1,21 @@
+# A claim of being first cannot be checked by reading the paper. A warning: narrow it to what was
+# looked at and when, or say it under "What is not known". The idea is from
+# claesbackman/AI-research-feedback's review-paper-checks (MIT), at d129756; see
+# .claude/skills/ouro-paper/REA.md.
+# The words are narrow on purpose. "The first release" and "the first page" are not claims of
+# being first, and a rule that fires on them teaches a writer to stop reading its warnings.
+extends: existence
+message: "'%s' is a claim of being first. Narrow it to what was looked at, and when."
+level: warning
+ignorecase: true
+tokens:
+  - we are the first
+  - is the first to
+  - are the first to
+  - for the first time
+  - the first (?:benchmark|paper|work|study|model|system|method|framework|dataset) (?:to|that|for|of)
+  - to (?:our|the best of our) knowledge
+  - novel
+  - unprecedented
+  - no prior work
+  - no (?:other|previous|existing) (?:benchmark|paper|work|study|model|system|method)

@@ -68,3 +68,17 @@ footer { padding: 36px 0 0; font-size: 16px; color: var(--dust); }
   .matrix { grid-template-columns: 1fr; }
   pre { font-size: 13px; }
 }
+
+/* Drawn with equations: each picture is its curves, in yellow chalk on a darker board, with the
+   equations under it in mono, as a calculator would show them. */
+.plots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin: 26px 0; }
+.plot { margin: 0; padding: 18px; background: var(--slate); border: 1px solid var(--line); border-radius: 18px; }
+.plot svg { display: block; width: 100%; height: auto; aspect-ratio: 1; }
+.plot path { fill: none; stroke: var(--yellow); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+#draw-boat path { stroke: #F5A35C; }
+#draw-sea path { stroke: var(--blue); }
+.plot figcaption { display: flex; flex-direction: column; gap: 4px; margin: 10px 0 0; font-size: 16px; }
+.plot figcaption strong { font: 600 20px/1.2 var(--display); }
+.plot figcaption span { color: var(--dust); }
+.plot pre { margin: 12px 0 0; padding: 12px 14px; font-size: 13px; white-space: pre-wrap; }
+@media (max-width: 760px) { .plots { grid-template-columns: 1fr; } }

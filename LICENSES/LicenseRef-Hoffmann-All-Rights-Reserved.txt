@@ -1,0 +1,39 @@
+Copyright (c) 2026 Matheus Hoffmann. All rights reserved.
+
+This notice covers the research "marola-bench": every file under the directory
+marola-bench/ of the repository marola-dev/marola-research (its paper and the
+rendered PDF, its references and their log, its notes, its journal and its
+website), and every release of it.
+
+No licence is granted. Without the written acknowledgement of Matheus Hoffmann
+(GitHub: h0ffmann), you may not copy, share, redistribute, republish, modify,
+translate, adapt or sell this work or any part of it, and you may not use it,
+or any part of it, as source material for another work. This applies to a
+person and to an automated system that acts for a person, such as a coding
+agent.
+
+Who has that acknowledgement, for work on marola-bench itself: the members of
+the GitHub organisations marola-dev and ouroboric-dev, and the author. It gives
+them the right to work on marola-bench inside those organisations. It does not
+give them the right to share it outside them.
+
+What stays permitted to everyone, because the law or a service requires it:
+
+  1. to read the work, and to link to it;
+  2. to cite it, by its DOI, with the author's name;
+  3. to quote a short passage with that citation, as the law of quotation
+     allows;
+  4. what GitHub's Terms of Service give to every user for a public
+     repository: to view it and to fork it on GitHub. A fork is under these
+     same terms.
+
+Whoever uses this work, a person or an agent, cites it: Hoffmann, M.,
+"marola-bench: a proposal for a WeatherBench for Brazil", with its DOI.
+
+The names and logos in the work are trademarks of their projects
+(TRADEMARKS.md). Works that this work cites keep their own terms.
+
+Copies that were published before this notice, under the terms they carried
+then, keep those terms for whoever received them then.
+
+THIS WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.

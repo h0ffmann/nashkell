@@ -1,0 +1,13 @@
+# The citation of nashkell. Written by hand from .zenodo.json; change the two together.
+cff-version: 1.2.0
+message: "If you cite nashkell, cite it like this. It has no DOI yet (issue #2)."
+title: "nashkell: game theory, in Haskell, with Latin on top"
+type: software
+authors:
+  - family-names: Hoffmann
+    given-names: Matheus
+    orcid: "https://orcid.org/0009-0009-1056-7661"
+repository-code: "https://github.com/h0ffmann/nashkell"
+url: "https://h0ffmann.github.io/nashkell/"
+license-url: "https://github.com/h0ffmann/nashkell/blob/main/LICENSE"
+keywords: [game theory, Haskell, Polysemy, OCR, obfuscation, Latin]

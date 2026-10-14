@@ -1,5 +1,7 @@
 # Nashkell
 
+> **the website:** `just site` builds it into `site/dist`; after the first merge it is published by the `site` workflow. the page says what this repository is, why open source reads as a game of two players, and what the study of obfuscation with git and Latin found. where each fact was read: [`REFERENCES.md`](REFERENCES.md). the ideas, one in each note: [`notes/`](notes/index.md).
+
 An algebraic-effects (Polysemy) pipeline that:
 
 1. Runs OCR on a scanned document via Tesseract (invoked as an external process, not FFI).

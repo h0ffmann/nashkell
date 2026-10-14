@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="two players and a table of four cells, drawn with one line each">
+  <path d="M40 60 H280 M40 120 H280 M40 180 H280"/>
+  <path d="M100 36 V204 M190 36 V204"/>
+  <path d="M58 150 c8 -22 30 -22 34 0 c4 18 -18 30 -34 8"/>
+  <path d="M232 76 c-18 6 -18 30 2 32 c20 2 26 -22 6 -32 c-6 -3 -12 -2 -16 2"/>
+  <path d="M132 142 l26 22 M158 142 l-26 22"/>
+  <path d="M222 150 c10 -10 24 0 16 12 c-8 12 -24 4 -18 -8"/>
+</svg>

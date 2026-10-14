@@ -175,3 +175,18 @@ repomix:
 ## NOTANDUM: hoc mandatum praesupponit git-init iam factum esse.
 bootstrap: build setup-latinize setup-hooks first-commit gh-create-repo push
     @echo "Bootstrap completus est. Sic Mundus Creatus Est."
+
+# ---------------------------------------------------------------------------
+# Gradus VIII -- Situs (site/): pagina una, in Gleam scripta
+# ---------------------------------------------------------------------------
+
+## Aedificat situm in site/dist: formam codicis probat, probationes
+## exsequitur, deinde paginam scribit. Instrumenta ex site/flake.nix
+## veniunt (h0ffmann/picasso, labs/gleam-website), in site/flake.lock fixa.
+site:
+    nix develop --extra-experimental-features 'nix-command flakes' --no-update-lock-file ./site --command just _site
+
+_site:
+    cd site && gleam format --check src test && gleam test
+    cd site && rm -rf dist && mkdir -p dist && gleam run -m nashkell_site/prerender --no-print-progress > dist/index.html && cp -R static/. dist/
+    @echo "site: site/dist"

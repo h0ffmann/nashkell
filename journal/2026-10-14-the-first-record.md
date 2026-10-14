@@ -2,7 +2,7 @@
 
 ## Challenge
 
-The owner asked for the first Zenodo record of nashkell: "Nashkell: Rizomatic experiments", an
+The owner asked for the first Zenodo record of nashkell: "Nashkell: Rhizomatic experiments", an
 open book in progress, in the voice of John Nash, the mathematical part of his second brain.
 
 ## Context

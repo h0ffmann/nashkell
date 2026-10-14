@@ -3,15 +3,19 @@
 % Taken in part from marola-dev/marola-research's format/header.tex at 51fae22 (MIT, same author).
 \usepackage{graphicx}
 \usepackage{xcolor}
+% The equations of the title page: ≤, π and ² print only in a font that has them; DejaVu Sans Mono,
+% by file name, from the TeX tree of the pinned toolchain.
+\newfontfamily\eqfont{DejaVuSansMono.ttf}
 \definecolor{bookred}{HTML}{A3201C}
 \definecolor{bookink}{HTML}{111111}
 \color{bookink}
-% The drawing of the cover, made from site/static/drawings/matrix.svg by `just book`.
+% The title page: two plots made of equations, side by side, each with its equations as its
+% caption (build/plots/cover.tex, written by `just plots`), in place of a drawing.
 \makeatletter
 \let\nash@maketitle\@maketitle
 \def\@maketitle{%
   \nash@maketitle
-  \begin{center}\IfFileExists{cover.pdf}{\includegraphics[width=0.42\textwidth]{cover.pdf}}{}\end{center}
+  \IfFileExists{cover.tex}{\noindent\input{cover.tex}}{}
   \vskip 0.6em
   \begin{center}\small\color{bookred}an open book in progress. the voice is ``Nash'', a persona of the author;\\
   no sentence in it is the mathematician John Forbes Nash Jr.'s.\end{center}

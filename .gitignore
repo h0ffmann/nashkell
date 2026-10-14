@@ -6,3 +6,7 @@ dist-newstyle/
 result
 result-*
 *.jsonl
+
+# site: the build of the website
+site/build/
+site/dist/

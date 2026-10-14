@@ -84,6 +84,37 @@ fn cell(
   ])
 }
 
+/// The cover's picture: the sea and the flame of the author's profile, drawn with their own
+/// equations, inside a broken frame (four corners and no box), in the manner of picasso's covers.
+fn cover_plot() -> Element(msg) {
+  let curves =
+    list.flat_map(drawings.all(), fn(d) {
+      case d.name {
+        "flame" | "sea" -> d.curves
+        _ -> []
+      }
+    })
+  html.figure([attribute.class("cover-plot")], [
+    html.span([attribute.class("corner tl")], []),
+    html.span([attribute.class("corner br")], []),
+    svg.svg(
+      [
+        a("viewBox", "0 0 300 300"),
+        a("role", "img"),
+        a(
+          "aria-label",
+          "the flame over the sea, drawn only with equations: the cover of this page",
+        ),
+      ],
+      list.map(curves, fn(c) { svg.path([a("d", drawings.path(c))]) }),
+    ),
+    html.figcaption([], [
+      html.text("drawn with equations: "),
+      html.a([attribute.href("#equations")], [html.text("see them")]),
+    ]),
+  ])
+}
+
 fn cover() -> Element(msg) {
   html.header([attribute.class("cover")], [
     html.div([], [
@@ -105,7 +136,7 @@ fn cover() -> Element(msg) {
         list.map(sections, fn(s) { link("#" <> s.0, s.1) }),
       ),
     ]),
-    drawing("matrix", "two players and a table of four cells, one line each"),
+    cover_plot(),
   ])
 }
 
@@ -412,13 +443,13 @@ fn foot() -> Element(msg) {
 pub fn view() -> Element(msg) {
   html.main([], [
     cover(),
+    equations(),
     pipeline(),
     letters(),
     game(),
     obfuscation(),
     latin(),
     faults(),
-    equations(),
     record(),
     foot(),
   ])

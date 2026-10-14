@@ -121,7 +121,7 @@ chapter that the others need. You may begin anywhere.
 
 ## How to cite
 
-Cite the DOI that Zenodo gives this book when its first version is released. Until then, cite the
-repository: <https://github.com/h0ffmann/nashkell>.
+Cite the DOI that always opens the newest version: [10.5281/zenodo.23356739](https://doi.org/10.5281/zenodo.23356739). The first
+version, v0.1.0, has its own: [10.5281/zenodo.23356740](https://doi.org/10.5281/zenodo.23356740).
 
 ## References

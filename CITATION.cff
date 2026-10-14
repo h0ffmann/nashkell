@@ -1,9 +1,17 @@
 # The citation of nashkell's open book. Written by hand from .zenodo.json; change the two together.
 cff-version: 1.2.0
-message: "If you cite this book, cite it like this. It has no DOI yet: the first release will give it one."
+message: "If you cite this book, cite it like this."
 title: "Nashkell: Rhizomatic experiments"
 type: software
 version: v0.1.0
+doi: "10.5281/zenodo.23356739"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23356739"
+    description: "the concept DOI: always the newest version"
+  - type: doi
+    value: "10.5281/zenodo.23356740"
+    description: "v0.1.0"
 authors:
   - family-names: Hoffmann
     given-names: Matheus

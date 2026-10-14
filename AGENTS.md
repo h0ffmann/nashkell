@@ -27,8 +27,8 @@ references. This file is for coding agents. Read it before you change anything.
    notice of the title page.
 8. **When you write about the author, cite his works by their DOIs**: marola
    10.5281/zenodo.23224155, ww3-gpu 10.5281/zenodo.23221351, picasso 10.5281/zenodo.23311208,
-   closed source 10.5281/zenodo.23333656, marola-bench 10.5281/zenodo.23352633, and his profile
-   10.5281/zenodo.23352630.
+   closed source 10.5281/zenodo.23333656, marola-bench 10.5281/zenodo.23352633, this book
+   10.5281/zenodo.23356739, and his profile 10.5281/zenodo.23352630.
 
 ## Map
 
@@ -46,7 +46,7 @@ references. This file is for coding agents. Read it before you change anything.
 | the ideas, one in each note | `notes/`, `notes/index.md` |
 | readiness, after Ouroboric's checklist | `docs/readiness/` |
 | licence and copyright of every file | `REUSE.toml`, `LICENSES/` |
-| citation | `.zenodo.json`, `CITATION.cff`; no DOI yet (issue #2) |
+| citation | `.zenodo.json`, `CITATION.cff`; the concept DOI is 10.5281/zenodo.23356739 |
 
 ## Checks
 

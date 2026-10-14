@@ -36,9 +36,46 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1791594108,
+        "narHash": "sha256-XK4KceonkwD8LuMAt/vNrz982mXJM5jeHAxMwsUXXAQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6510408d147d8c5e6d76043e899e9251756f6a75",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "paper": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "dir": "labs/paper",
+        "lastModified": 1791876473,
+        "narHash": "sha256-eWsZEY8HnJ7TGSnk/rX5Qx0ebyJ7N450TG9BabnSeV8=",
+        "owner": "h0ffmann",
+        "repo": "picasso",
+        "rev": "52c5772a292e38ac3966a0b7b4d3d337ee1ce1f0",
+        "type": "github"
+      },
+      "original": {
+        "dir": "labs/paper",
+        "owner": "h0ffmann",
+        "repo": "picasso",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
-        "gleam-website": "gleam-website"
+        "gleam-website": "gleam-website",
+        "paper": "paper"
       }
     }
   },

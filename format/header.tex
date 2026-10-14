@@ -1,0 +1,19 @@
+% The look of the book: closed-source's paper (black and red) with picasso's one-line drawing on
+% the title page. Only packages of picasso's `paper` lab are used, and fonts of its TeX tree.
+% Taken in part from marola-dev/marola-research's format/header.tex at 51fae22 (MIT, same author).
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{bookred}{HTML}{A3201C}
+\definecolor{bookink}{HTML}{111111}
+\color{bookink}
+% The drawing of the cover, made from site/static/drawings/matrix.svg by `just book`.
+\makeatletter
+\let\nash@maketitle\@maketitle
+\def\@maketitle{%
+  \nash@maketitle
+  \begin{center}\IfFileExists{cover.pdf}{\includegraphics[width=0.42\textwidth]{cover.pdf}}{}\end{center}
+  \vskip 0.6em
+  \begin{center}\small\color{bookred}an open book in progress. the voice is ``Nash'', a persona of the author;\\
+  no sentence in it is the mathematician John Forbes Nash Jr.'s.\end{center}
+  \vskip 1em}
+\makeatother

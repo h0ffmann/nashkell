@@ -16,3 +16,18 @@ path = ["scripts/md-quality.sh", "scripts/notes-check.sh", ".vale.ini", ".vale/s
 precedence = "override"
 SPDX-FileCopyrightText = ["2026 Matheus Hoffmann", "2026 marola.dev"]
 SPDX-License-Identifier = "MIT"
+
+# The open book and the notes: CC BY 4.0, by the owner's choice of 14 October 2026.
+[[annotations]]
+path = ["book/**", "notes/**"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Matheus Hoffmann"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# The book's title filter and part of its LaTeX header, from marola-dev/marola-research at 51fae22 (MIT).
+[[annotations]]
+path = ["format/**"]
+precedence = "override"
+SPDX-FileCopyrightText = ["2026 Matheus Hoffmann", "2026 marola.dev"]
+SPDX-License-Identifier = "MIT"
+

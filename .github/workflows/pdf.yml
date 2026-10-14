@@ -1,0 +1,29 @@
+# pdf -- on each pull request and each push to main: every reference of the open book has its row,
+# the book builds with the pinned toolchain (picasso's paper lab, through site/flake.nix) with
+# pandoc's warnings as errors, and the committed book/nashkell.pdf is the one its text makes.
+name: pdf
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  book:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: cachix/install-nix-action@v31
+      - name: every reference has its row and is cited
+        run: nix develop --no-update-lock-file ./site#paper --command just refs
+      - name: the committed book is the one its text makes
+        run: nix develop --no-update-lock-file ./site#paper --command just _current
+      - uses: actions/upload-artifact@v4
+        with:
+          name: book
+          path: build/book/nashkell.pdf
+          if-no-files-found: error

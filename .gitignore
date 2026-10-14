@@ -10,3 +10,6 @@ result-*
 # site: the build of the website
 site/build/
 site/dist/
+
+# what `just book` builds before it is compared or copied
+build/

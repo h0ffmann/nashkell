@@ -6,6 +6,8 @@ import gleam/list
 import lustre/attribute.{attribute as a}
 import lustre/element.{type Element}
 import lustre/element/html
+import lustre/element/svg
+import nashkell_site/drawings
 
 pub const repo = "https://github.com/h0ffmann/nashkell"
 
@@ -20,6 +22,7 @@ pub const sections = [
   #("obfuscation", "a study of obfuscation, with Git and Latin"),
   #("latin", "comments in Latin"),
   #("faults", "what is not right in it"),
+  #("equations", "drawn with equations"),
   #("record", "the record"),
 ]
 
@@ -305,6 +308,54 @@ fn faults() -> Element(msg) {
   ])
 }
 
+fn equations() -> Element(msg) {
+  section("equations", "yellow", [
+    p(
+      "four things of the author's profile, each drawn only with equations, the way people draw with the graphing calculator Desmos. the page computes every curve when it is built, so each picture is exactly its equations. type the lines into a graphing calculator to draw them again.",
+    ),
+    html.div(
+      [attribute.class("plots")],
+      list.map(drawings.all(), fn(d) {
+        html.figure([attribute.class("plot"), attribute.id("draw-" <> d.name)], [
+          svg.svg(
+            [
+              a("viewBox", "0 0 300 300"),
+              a("role", "img"),
+              a("aria-label", d.title <> ": " <> d.said),
+            ],
+            list.map(d.curves, fn(c) { svg.path([a("d", drawings.path(c))]) }),
+          ),
+          html.figcaption([], [
+            html.strong([], [html.text(d.title)]),
+            html.span([], [html.text(d.said)]),
+          ]),
+          html.pre([], [
+            html.code([], [
+              html.text(
+                d.curves |> list.map(drawings.equation) |> string_join("\n"),
+              ),
+            ]),
+          ]),
+        ])
+      }),
+    ),
+    html.p([], [
+      html.text("the four are from "),
+      link("https://h0ffmann.github.io/h0ffmann/", "the author's profile"),
+      html.text(
+        ": the sea of his work, the flame of \"the aquatic prometheus\", the orange boat of its icon, and Ouroboros, the name of the friends' research.",
+      ),
+    ]),
+  ])
+}
+
+fn string_join(items: List(String), sep: String) -> String {
+  case items {
+    [] -> ""
+    [first, ..rest] -> list.fold(rest, first, fn(acc, s) { acc <> sep <> s })
+  }
+}
+
 fn record() -> Element(msg) {
   section("record", "yellow", [
     html.p([], [
@@ -361,6 +412,7 @@ pub fn view() -> Element(msg) {
     obfuscation(),
     latin(),
     faults(),
+    equations(),
     record(),
     foot(),
   ])

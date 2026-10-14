@@ -20,6 +20,8 @@ jobs:
       - uses: cachix/install-nix-action@v31
       - name: every reference has its row and is cited
         run: nix develop --no-update-lock-file ./site#paper --command just refs
+      - name: the plots of the title page, from the site's own curves
+        run: nix develop --no-update-lock-file ./site --command bash -c 'cd site && gleam run -m nashkell_site/plots --no-print-progress'
       - name: the committed book is the one its text makes
         run: nix develop --no-update-lock-file ./site#paper --command just _current
       - uses: actions/upload-artifact@v4

@@ -372,8 +372,10 @@ fn record() -> Element(msg) {
       html.strong([], [t("The open book: ")]),
       link("nashkell.pdf", "Nashkell: Rhizomatic experiments"),
       t(
-        ", v0.1.0, in progress. Five experiments, in the voice of Nash. Its text is CC BY 4.0. It has no DOI yet: the first release will give it one.",
+        ", v0.1.0, in progress. Five experiments, in the voice of Nash. Its text is CC BY 4.0. Cite it as doi ",
       ),
+      link("https://doi.org/10.5281/zenodo.23356739", "10.5281/zenodo.23356739"),
+      t("."),
     ]),
     statement("Remark", "8.2", [
       t("each fact of this page, with where it was read, is in "),

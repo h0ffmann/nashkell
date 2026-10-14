@@ -6,6 +6,10 @@ GitHub release and gives it a DOI, which is permanent.
 
 ## v0.1.0: the first version
 
+Released on 14 October 2026. DOI [10.5281/zenodo.23356740](https://doi.org/10.5281/zenodo.23356740); the concept DOI, which always
+opens the newest version, is [10.5281/zenodo.23356739](https://doi.org/10.5281/zenodo.23356739). Zenodo recorded it as a book, CC BY
+4.0, open access, as `.zenodo.json` says (read back from Zenodo's API the same day).
+
 The first version of the open book **Nashkell: Rhizomatic experiments**, in the voice of Nash,
 a persona of the author (not the mathematician John Forbes Nash Jr.; no sentence in that voice is
 his). Four pages, five experiments:

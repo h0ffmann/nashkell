@@ -9,7 +9,7 @@
 [![live links](https://github.com/h0ffmann/nashkell/actions/workflows/links.yml/badge.svg)](https://github.com/h0ffmann/nashkell/actions/workflows/links.yml)
 [![haskell](https://img.shields.io/badge/haskell-polysemy-5D4F85?style=flat-square&logo=haskell&logoColor=white)](#project-layout)
 [![license: all rights reserved](https://img.shields.io/badge/license-all%20rights%20reserved-A3201C?style=flat-square)](LICENSE)
-[![DOI: not yet](https://img.shields.io/badge/DOI-not%20yet-6E7781?style=flat-square)](https://github.com/h0ffmann/nashkell/issues/2)
+[![DOI: 10.5281/zenodo.23356739](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23356739-1682D4?style=flat-square)](https://doi.org/10.5281/zenodo.23356739)
 
 by [matheus hoffmann](https://h0ffmann.github.io/h0ffmann/) (h0ffmann). **the open book, in progress:** [*Nashkell: Rhizomatic experiments*](book/nashkell.pdf), in the voice of Nash, a persona of the author (not the mathematician John Nash). its text is CC BY 4.0. the website draws what this repository is, why open source reads as a game of two players, what the study of obfuscation with git and Latin found, and four drawings made of equations. where each fact was read: [`REFERENCES.md`](REFERENCES.md).
 

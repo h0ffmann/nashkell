@@ -179,6 +179,7 @@ site:
 _site:
     cd site && gleam format --check src test && gleam test
     cd site && rm -rf dist && mkdir -p dist && gleam run -m nashkell_site/prerender --no-print-progress > dist/index.html && cp -R static/. dist/
+    cp book/nashkell.pdf site/dist/nashkell.pdf
     @echo "site: site/dist"
 
 # ---------------------------------------------------------------------------
@@ -202,7 +203,46 @@ reuse:
 
 ## Quod CI exsequitur, ante petitionem (pull request) vocandum.
 check:
+    just refs
     just md-quality --self-test
     just md-quality
     just notes
     just reuse
+
+# ---------------------------------------------------------------------------
+# Gradus X -- Liber apertus (book/): "Nashkell: Rizomatic experiments"
+# ---------------------------------------------------------------------------
+
+paper := "nix develop --extra-experimental-features 'nix-command flakes' --no-update-lock-file ./site#paper --command"
+
+## Librum in book/nashkell.pdf scribit, per pandoc et XeLaTeX ex officina "paper"
+## operis picasso. Pictura frontis ex site/static/drawings/matrix.svg fit.
+book:
+    {{paper}} just _book book/nashkell.pdf
+
+_book out:
+    mkdir -p build/book "$(dirname "{{out}}")"
+    rsvg-convert -f pdf -o build/book/cover.pdf site/static/drawings/matrix.svg
+    cd book && TEXINPUTS="../build/book:" pandoc book.md \
+      --from markdown --citeproc --bibliography refs.bib --metadata link-citations=true \
+      --lua-filter ../format/title.lua --pdf-engine=xelatex --fail-if-warnings \
+      -H ../format/header.tex -V geometry:margin=2.6cm -V fontsize=11pt -V colorlinks=true \
+      -V linkcolor=bookred -V urlcolor=bookred -V citecolor=bookred \
+      --resource-path=.:../build/book -o "$OLDPWD/{{out}}"
+    @echo "book: {{out}}"
+
+## Omnis clavis refs.bib lineam in book/REFERENCES.md habet, et liber eam citat.
+refs:
+    for k in $(grep -oE '^@[a-z]+\{[^,]+' book/refs.bib | cut -d'{' -f2); do grep -q "\`$k\`" book/REFERENCES.md || { echo "refs: $k has no row in book/REFERENCES.md" >&2; exit 1; }; done
+    for k in $(grep -oE '^@[a-z]+\{[^,]+' book/refs.bib | cut -d'{' -f2); do grep -q "@$k\b" book/book.md || { echo "refs: $k is in refs.bib and the book does not cite it" >&2; exit 1; }; done
+    @echo "refs: every entry of book/refs.bib has a row and is cited"
+
+## Liber commissus idem est ac quem textus facit: verba duorum comparantur.
+current:
+    {{paper}} just _current
+
+_current:
+    [ -f book/nashkell.pdf ] || { echo "current: book/nashkell.pdf is not committed; run just book" >&2; exit 1; }
+    just _book build/book/nashkell.pdf
+    diff <(pdftotext book/nashkell.pdf -) <(pdftotext build/book/nashkell.pdf -) >/dev/null || { echo "current: book/nashkell.pdf was not made from this text; run just book and commit it" >&2; exit 1; }
+    @echo "current: book/nashkell.pdf is the one its text makes"

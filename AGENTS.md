@@ -7,7 +7,8 @@ references. This file is for coding agents. Read it before you change anything.
 ## Hard rules
 
 1. **Authorship.** nashkell is the work of Matheus Hoffmann (`h0ffmann`, ORCID
-   0009-0009-1056-7661). All rights reserved (`LICENSE`). An agent's work is credited in the
+   0009-0009-1056-7661). The open book and the notes are CC BY 4.0; the rest is all rights
+   reserved (`LICENSE`, `REUSE.toml`). An agent's work is credited in the
    `Co-Authored-By` trailer of its commits, and nowhere as an author of the work.
 2. **Nothing leaves.** Do not copy any part of this repository into another repository, or for
    another person, without the owner's written permission. The scripts marked MIT in
@@ -20,7 +21,11 @@ references. This file is for coding agents. Read it before you change anything.
 5. **No secret in the repository.** The pipeline reads `ANTHROPIC_API_KEY` from the environment.
 6. **Work on a branch and open a pull request.** Never merge one, never push to `main`. Only the
    owner tags or releases, and only when he asks for that release by name.
-7. **When you write about the author, cite his works by their DOIs**: marola
+7. **Nash is a persona, not John Nash.** The open book speaks as "Nash", the author's voice for
+   the mathematical part of his second brain (`PERSONAS.md`). Never write a sentence as a
+   quotation of the mathematician John Forbes Nash Jr. without its source; never remove the
+   notice of the title page.
+8. **When you write about the author, cite his works by their DOIs**: marola
    10.5281/zenodo.23224155, ww3-gpu 10.5281/zenodo.23221351, picasso 10.5281/zenodo.23311208,
    closed source 10.5281/zenodo.23333656, marola-bench 10.5281/zenodo.23352633, and his profile
    10.5281/zenodo.23352630.
@@ -33,6 +38,10 @@ references. This file is for coding agents. Read it before you change anything.
 | the Latin of names | `tools/latinize.py`, `tools/dictionary.json`, `setup-latinize.sh`, `README-latinizer.md` |
 | the website | `site/` (Gleam and Lustre); its tools in `site/flake.nix`, pinned in `site/flake.lock` |
 | the drawings made of equations | `site/src/nashkell_site/drawings.gleam` |
+| the open book, its sources, its look | `book/book.md`, `book/refs.bib`, `book/REFERENCES.md`, `format/`; `just book`, `just refs`, `just current` |
+| releases and the Zenodo record | `RELEASES.md`, `.zenodo.json`, `CITATION.cff` |
+| who speaks | `PERSONAS.md` |
+| the journal | `journal/` |
 | the facts and their sources | `REFERENCES.md` |
 | the ideas, one in each note | `notes/`, `notes/index.md` |
 | readiness, after Ouroboric's checklist | `docs/readiness/` |

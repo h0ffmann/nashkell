@@ -1,9 +1,11 @@
-Copyright (c) 2024-2026 Matheus Hoffmann (h0ffmann). All rights reserved.
+Copyright (c) 2024-2026 Matheus Hoffmann (h0ffmann).
 
-nashkell, its code, its notes, its website and its drawings are the work of Matheus Hoffmann.
-No licence is granted: you may read this repository on GitHub, and you may cite it, but you
-may not copy, change or distribute any part of it without his written permission.
+nashkell is two things, under two sets of terms (REUSE.toml says which file is which):
 
-The scripts that are marked in REUSE.toml as taken from marola-dev/marola-research are under
-the MIT licence (LICENSES/MIT.txt). The full terms of this repository are in
-LICENSES/LicenseRef-Hoffmann-All-Rights-Reserved.txt.
+- The open book "Nashkell: Rizomatic experiments" (book/) and the notes (notes/) are under the
+  Creative Commons Attribution 4.0 International licence, CC BY 4.0 (LICENSES/CC-BY-4.0.txt):
+  you may share and adapt them, if you credit Matheus Hoffmann and link the source.
+- Everything else (the code of the pipeline, the website, its drawings, the tools) is the work of
+  Matheus Hoffmann, all rights reserved (LICENSES/LicenseRef-Hoffmann-All-Rights-Reserved.txt):
+  you may read and cite it, and you may not copy, change or distribute it without his written
+  permission. The scripts that REUSE.toml marks as taken from marola-dev/marola-research are MIT.

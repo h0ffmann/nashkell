@@ -386,6 +386,13 @@ fn string_join(items: List(String), sep: String) -> String {
 
 fn record() -> Element(msg) {
   section("record", "yellow", [
+    html.p([attribute.class("book")], [
+      html.strong([], [html.text("the open book: ")]),
+      link("nashkell.pdf", "Nashkell: Rizomatic experiments"),
+      html.text(
+        ", v0.1.0, in progress. five experiments, in the voice of Nash, a persona of the author: not the mathematician John Nash, and no sentence in it is his. its text is CC BY 4.0.",
+      ),
+    ]),
     html.p([], [
       html.text("each fact of this page, with where it was read, is in "),
       link(repo <> "/blob/main/REFERENCES.md", "REFERENCES.md"),

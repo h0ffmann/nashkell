@@ -1,15 +1,21 @@
 <div align="center">
 
+<img alt="the flame and the sea, drawn only with equations" src="docs/cover.svg" width="560"/>
+
+<sub>the flame: <code>(1.1 sin(t) sin(t/2)^1.5, 2 cos(t))</code> and <code>(0.55 sin(t) sin(t/2)^1.5, cos(t) - 0.85)</code>, 0 ≤ t ≤ 2π<br/>the sea: <code>y = 0.35 sin(2x) + 0.12 sin(5x + 1) + 1</code>, <code>y = 0.3 sin(2x + 1.2) + 0.1 sin(6x)</code>, <code>y = 0.25 sin(2x + 2.5) + 0.08 sin(7x + 2) - 1</code>, -6 ≤ x ≤ 6</sub>
+
 # nashkell
 
 <sub>game theory, in Haskell, with Latin on top · <a href="https://h0ffmann.github.io/nashkell/">the site</a> · <a href="REFERENCES.md">references</a> · <a href="notes/index.md">notes</a> · <a href="AGENTS.md">for agents</a></sub>
+
+[![latest DOI: 10.5281/zenodo.23356739](https://img.shields.io/badge/latest%20DOI-10.5281%2Fzenodo.23356739-A3201C?style=for-the-badge)](https://doi.org/10.5281/zenodo.23356739)
+[![permanent DOI v0.1.0: 10.5281/zenodo.23356740](https://img.shields.io/badge/permanent%20DOI%20·%20v0.1.0-10.5281%2Fzenodo.23356740-141210?style=for-the-badge)](https://doi.org/10.5281/zenodo.23356740)
 
 [![site](https://github.com/h0ffmann/nashkell/actions/workflows/site.yml/badge.svg)](https://github.com/h0ffmann/nashkell/actions/workflows/site.yml)
 [![.md](https://github.com/h0ffmann/nashkell/actions/workflows/md.yml/badge.svg)](https://github.com/h0ffmann/nashkell/actions/workflows/md.yml)
 [![live links](https://github.com/h0ffmann/nashkell/actions/workflows/links.yml/badge.svg)](https://github.com/h0ffmann/nashkell/actions/workflows/links.yml)
 [![haskell](https://img.shields.io/badge/haskell-polysemy-5D4F85?style=flat-square&logo=haskell&logoColor=white)](#project-layout)
 [![license: all rights reserved](https://img.shields.io/badge/license-all%20rights%20reserved-A3201C?style=flat-square)](LICENSE)
-[![DOI: 10.5281/zenodo.23356739](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23356739-1682D4?style=flat-square)](https://doi.org/10.5281/zenodo.23356739)
 
 by [matheus hoffmann](https://h0ffmann.github.io/h0ffmann/) (h0ffmann). **the open book, in progress:** [*Nashkell: Rhizomatic experiments*](book/nashkell.pdf), in the voice of Nash, a persona of the author (not the mathematician John Nash). its text is CC BY 4.0. the website draws what this repository is, why open source reads as a game of two players, what the study of obfuscation with git and Latin found, and four drawings made of equations. where each fact was read: [`REFERENCES.md`](REFERENCES.md).
 

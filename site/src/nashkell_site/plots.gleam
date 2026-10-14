@@ -2,6 +2,7 @@
 //// piece of LaTeX that sets two of them side by side, each with its equations as its caption.
 //// Written into build/plots/; the book reads them from there (`just book`).
 
+import gleam/int
 import gleam/list
 import gleam/string
 import nashkell_site/drawings
@@ -54,7 +55,31 @@ pub fn cover_tex() -> String {
   string.join(parts, "\\hfill\n") <> "\n"
 }
 
+/// The README's main image: the flame and the sea side by side, on paper, so that it reads on a
+/// light page and on a dark one. 600 by 300, from the same curves as the site and the book.
+pub fn readme_svg() -> String {
+  let half = fn(name: String, dx: Int) {
+    list.filter(drawings.all(), fn(d) { d.name == name })
+    |> list.flat_map(fn(d) { d.curves })
+    |> list.map(fn(c) {
+      "<path transform=\"translate("
+      <> int.to_string(dx)
+      <> " 0)\" d=\""
+      <> drawings.path(c)
+      <> "\"/>"
+    })
+    |> string.concat
+  }
+  "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 300\" role=\"img\" aria-label=\"the flame and the sea, drawn only with equations\">"
+  <> "<rect width=\"600\" height=\"300\" fill=\"#F4EFE6\"/>"
+  <> "<g fill=\"none\" stroke=\"#141210\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\">"
+  <> half("flame", 0)
+  <> half("sea", 300)
+  <> "</g><path d=\"M14 14 h34 M14 14 v34 M586 286 h-34 M586 286 v-34\" stroke=\"#A3201C\" stroke-width=\"3\" fill=\"none\"/></svg>\n"
+}
+
 pub fn main() -> Nil {
+  write_file("../docs/cover.svg", readme_svg())
   list.each(drawings.all(), fn(d) {
     write_file("../build/plots/plot-" <> d.name <> ".svg", svg(d))
   })

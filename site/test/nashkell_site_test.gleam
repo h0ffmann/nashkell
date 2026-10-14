@@ -68,3 +68,11 @@ pub fn the_headline_and_the_captions_test() {
   assert string.contains(h, "The best game ever by Nash")
   assert string.contains(h, "not the mathematician John Forbes Nash Jr.")
 }
+
+// The DOIs are on the cover and in "how to cite", as two-part badges.
+pub fn the_dois_are_shown_test() {
+  let h = html()
+  assert string.contains(h, page.doi)
+  assert string.contains(h, page.version_doi.1)
+  assert string.contains(h, "Latest DOI")
+}

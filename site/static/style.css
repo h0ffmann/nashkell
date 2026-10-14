@@ -82,3 +82,13 @@ footer { padding: 30px 0 0; font-size: 16px; color: var(--muted); }
   .plots { grid-template-columns: 1fr; }
   .matrix { grid-template-columns: 1fr; }
 }
+
+/* A DOI as a two-part badge, as closed-source's site has it: the label in red, the number on paper. */
+.doi { display: inline-flex; margin: 0 10px 8px 0; border: 1px solid var(--rule); font: 500 14px/1 var(--caps); text-decoration: none; color: var(--ink); background: var(--paper); }
+.doi span { padding: 7px 10px; }
+.doi span:first-child { background: var(--red); color: #F4EFE6; letter-spacing: .12em; text-transform: uppercase; }
+.doi:hover { border-color: var(--red); }
+.doi-line { margin: 20px 0 0; }
+.dois dt { margin-top: 12px; }
+.dois dd { margin: 4px 0 0; }
+.citation { white-space: pre-wrap; }

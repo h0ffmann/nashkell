@@ -18,6 +18,12 @@ pub const repo = "https://github.com/h0ffmann/nashkell"
 /// The commit of the repository that the page describes.
 pub const read_at = "5a2d3cc"
 
+/// The book's DOIs, as Zenodo minted them on 14 October 2026 (RELEASES.md): the concept DOI,
+/// which always opens the newest version, and the DOI of v0.1.0 alone.
+pub const doi = "10.5281/zenodo.23356739"
+
+pub const version_doi = #("v0.1.0", "10.5281/zenodo.23356740")
+
 /// The headline, as the owner wrote it.
 pub const headline = "GAME THEORY:"
 
@@ -33,6 +39,7 @@ pub const sections = [
   #("latin", "comments in Latin"),
   #("faults", "what is not right in it"),
   #("record", "the book and the record"),
+  #("cite", "how to cite"),
 ]
 
 fn link(href: String, label: String) -> Element(msg) {
@@ -109,6 +116,25 @@ fn plot(d: drawings.Drawing, class: String) -> Element(msg) {
   ])
 }
 
+/// A DOI as a two-part badge that opens doi.org, as closed-source's site has it.
+fn doi_link(label: String, d: String) -> Element(msg) {
+  html.a(
+    [
+      attribute.class("doi"),
+      attribute.href("https://doi.org/" <> d),
+      attribute.rel("noopener"),
+    ],
+    [html.span([], [html.text(label)]), html.span([], [html.text(d)])],
+  )
+}
+
+fn doi_line() -> Element(msg) {
+  html.p([attribute.class("doi-line")], [
+    doi_link("Latest DOI", doi),
+    doi_link("Permanent DOI · " <> version_doi.0, version_doi.1),
+  ])
+}
+
 fn by_name(name: String) -> List(drawings.Drawing) {
   list.filter(drawings.all(), fn(d) { d.name == name })
 }
@@ -124,6 +150,7 @@ fn cover() -> Element(msg) {
         html.span([attribute.class("head")], [html.text(headline)]),
         html.span([attribute.class("tail")], [html.text(headline_tail)]),
       ]),
+      doi_line(),
     ]),
     html.div([attribute.class("band")], [
       html.text("nashkell · an open book in progress, in the voice of Nash"),
@@ -406,6 +433,48 @@ fn record() -> Element(msg) {
   ])
 }
 
+fn cite() -> Element(msg) {
+  section("cite", [
+    statement("Definition", "9.1", [
+      t("The two DOIs of the book, as Zenodo minted them on 14 October 2026:"),
+    ]),
+    html.dl([attribute.class("dois")], [
+      html.dt([], [doi_link("Latest DOI", doi)]),
+      html.dd([], [
+        t(
+          "one DOI for the whole book. It always opens the newest version. Cite this one.",
+        ),
+      ]),
+      html.dt([], [
+        doi_link("Permanent DOI · " <> version_doi.0, version_doi.1),
+      ]),
+      html.dd([], [
+        t(
+          "one DOI for "
+          <> version_doi.0
+          <> " alone: the same text forever. Add it when the exact wording matters.",
+        ),
+      ]),
+    ]),
+    html.pre([attribute.class("citation")], [
+      html.code([], [
+        t(
+          "Hoffmann, M. (2026). Nashkell: Rhizomatic experiments (Version v0.1.0). Zenodo. https://doi.org/"
+          <> doi
+          <> "\n\n@book{hoffmann2026nashkell,\n  author    = {Hoffmann, Matheus},\n  title     = {Nashkell: Rhizomatic experiments},\n  year      = {2026},\n  version   = {v0.1.0},\n  publisher = {Zenodo},\n  doi       = {"
+          <> doi
+          <> "}\n}",
+        ),
+      ]),
+    ]),
+    statement("Remark", "9.2", [
+      t(
+        "professional citation is the argument of the author's other book. cite this one, and cite what you borrow.",
+      ),
+    ]),
+  ])
+}
+
 fn foot() -> Element(msg) {
   html.footer([], [
     html.p([], [
@@ -436,6 +505,7 @@ pub fn view() -> Element(msg) {
       latin(),
       faults(),
       record(),
+      cite(),
       foot(),
     ]),
   ])

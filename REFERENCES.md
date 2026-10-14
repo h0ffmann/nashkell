@@ -26,6 +26,7 @@ not checked at its source says so. Written on 14 October 2026, with the reposito
 | the four drawings and their equations | [`site/src/nashkell_site/drawings.gleam`](site/src/nashkell_site/drawings.gleam) | each curve is computed from the equation that the page prints | verified by the tests of `site/` |
 | the idea of a bench | marola-bench, doi [10.5281/zenodo.23352633](https://doi.org/10.5281/zenodo.23352633) | — | the reading of the note "a bench for the fourth step"; marola-bench's paper was not quoted |
 | the game of two players | none | — | a reading by the agent that drafted the page (Claude), for the owner to keep or change. No payoff was measured |
+| a TV audience is a competition; the owner estimated one as a contractor; the game theory came later | the owner, 14 October 2026 (the same note in h0ffmann/closed-source, `notes/202610141830-tv-audience-is-competition.md`) | — | the owner's account of his own work, not checked further; the game's players, strategies and payoffs are the note's reading. The broadcaster is not named |
 | the six DOIs of the author's other works | the profile, [h0ffmann/h0ffmann](https://github.com/h0ffmann/h0ffmann), `REUSE.md` | — | verified there, not here |
 
 ## Not read

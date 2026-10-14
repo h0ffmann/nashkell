@@ -4,17 +4,32 @@ Each release of the open book "Nashkell: Rhizomatic experiments", with its DOI a
 Only the owner cuts a release (AGENTS.md, rule 6). Zenodo's webhook archives every published
 GitHub release and gives it a DOI, which is permanent.
 
-## v0.1.0: prepared, not released
+## v0.1.0: the first version
 
-The first version of the book: five experiments in the voice of Nash, four pages.
+The first version of the open book **Nashkell: Rhizomatic experiments**, in the voice of Nash,
+a persona of the author (not the mathematician John Forbes Nash Jr.; no sentence in that voice is
+his). Four pages, five experiments:
 
-**Before the release, the owner:**
+- three answers about a source: "no source found", "contradicted" and "likely fabricated" kept apart;
+- comments that must be Latin, and a hook that says where it fails;
+- a mask with its key beside it: names that git stores in Latin;
+- pictures that are only equations;
+- a game of two players about opening a work.
 
-1. turns this repository on in Zenodo's GitHub page (his account);
-2. merges the pull request that brings `book/` and `.zenodo.json`;
-3. cuts the release from `main`: `just release v0.1.0` (it checks the tree, the references and the PDF, asks for the version again, and creates the GitHub release);
-4. runs `just doi` after a few minutes, and reads the record back on Zenodo at once: type "book", licence CC BY 4.0, open access, the
-   title, his ORCID. Two records of his came out with the wrong terms before (journal/).
+The book's text and the notes are CC BY 4.0; the code is all rights reserved. Every source is in
+`book/REFERENCES.md`, with its status; what was not tried is said in the book.
 
-**After the release**, the DOI goes into: this file, `CITATION.cff`, the book's "How to cite",
-the website's record, `REFERENCES.md`, and h0ffmann/h0ffmann and h0ffmann/closed-source (issue #2).
+## How a release is made
+
+Only the owner releases (AGENTS.md, rule 6). Zenodo's webhook archives every published GitHub
+release and gives it a DOI, which is permanent.
+
+1. Turn this repository on in Zenodo's GitHub page (the owner's account). Without it, a release
+   gets no DOI.
+2. `just release vX.Y.Z` on a clean `main`: it checks the references and the PDF, asks for the
+   version again, and creates the GitHub release with the notes of that version from this file.
+3. `just doi` after a few minutes; then read the record on Zenodo: type book, licence CC BY 4.0,
+   open access, the title, the ORCID. Two records of the owner came out with the wrong terms
+   before (journal/).
+4. The DOI goes into this file, `CITATION.cff`, the book's "How to cite", the website's record,
+   `REFERENCES.md`, and h0ffmann/h0ffmann and h0ffmann/closed-source (issue #2).

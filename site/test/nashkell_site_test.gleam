@@ -25,7 +25,7 @@ pub fn every_section_is_on_the_page_and_in_the_jump_list_test() {
 pub fn the_page_says_what_is_not_verified_and_what_is_missing_test() {
   let h = html()
   assert string.contains(h, "not verified at the source")
-  assert string.contains(h, "there is no licence file")
+  assert string.contains(h, "all rights reserved")
   assert string.contains(h, "it is not a result")
 }
 

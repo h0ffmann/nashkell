@@ -1,6 +1,19 @@
-# Nashkell
+<div align="center">
 
-> **the website:** `just site` builds it into `site/dist`; after the first merge it is published by the `site` workflow. the page says what this repository is, why open source reads as a game of two players, and what the study of obfuscation with git and Latin found. where each fact was read: [`REFERENCES.md`](REFERENCES.md). the ideas, one in each note: [`notes/`](notes/index.md).
+# nashkell
+
+<sub>game theory, in Haskell, with Latin on top · <a href="https://h0ffmann.github.io/nashkell/">the site</a> · <a href="REFERENCES.md">references</a> · <a href="notes/index.md">notes</a> · <a href="AGENTS.md">for agents</a></sub>
+
+[![site](https://github.com/h0ffmann/nashkell/actions/workflows/site.yml/badge.svg)](https://github.com/h0ffmann/nashkell/actions/workflows/site.yml)
+[![.md](https://github.com/h0ffmann/nashkell/actions/workflows/md.yml/badge.svg)](https://github.com/h0ffmann/nashkell/actions/workflows/md.yml)
+[![live links](https://github.com/h0ffmann/nashkell/actions/workflows/links.yml/badge.svg)](https://github.com/h0ffmann/nashkell/actions/workflows/links.yml)
+[![haskell](https://img.shields.io/badge/haskell-polysemy-5D4F85?style=flat-square&logo=haskell&logoColor=white)](#project-layout)
+[![license: all rights reserved](https://img.shields.io/badge/license-all%20rights%20reserved-A3201C?style=flat-square)](LICENSE)
+[![DOI: not yet](https://img.shields.io/badge/DOI-not%20yet-6E7781?style=flat-square)](https://github.com/h0ffmann/nashkell/issues/2)
+
+by [matheus hoffmann](https://h0ffmann.github.io/h0ffmann/) (h0ffmann). the website draws what this repository is, why open source reads as a game of two players, what the study of obfuscation with git and Latin found, and four drawings made of equations. where each fact was read: [`REFERENCES.md`](REFERENCES.md).
+
+</div>
 
 An algebraic-effects (Polysemy) pipeline that:
 
@@ -15,7 +28,7 @@ All source comments are written in **Classical Latin**; identifiers, types, and 
 
 ## Project layout
 
-```
+```text
 nashkell.cabal
 flake.nix
 app/Main.hs                                -- entry point, wires the effect stack together

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# pre-commit: refuse a commit whose Haskell comments are not in Latin (.githooks/check-latin.sh).
+# Turn it on once per clone: `just setup-hooks`.
+set -euo pipefail
+mapfile -t files < <(git diff --cached --name-only --diff-filter=ACM -- '*.hs')
+[ "${#files[@]}" -eq 0 ] && exit 0
+exec "$(git rev-parse --show-toplevel)/.githooks/check-latin.sh" "${files[@]}"

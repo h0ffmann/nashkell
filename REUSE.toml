@@ -1,0 +1,18 @@
+version = 1
+
+# Licence and copyright for every file, in one place, with no header in any file: the pattern of
+# the ouroboric-dev repositories, which h0ffmann/closed-source and marola-dev/marola-research follow
+# too. When several blocks match a file, the last one wins. Check with `just reuse`.
+
+[[annotations]]
+path = ["**"]
+precedence = "closest"
+SPDX-FileCopyrightText = "2024-2026 Matheus Hoffmann"
+SPDX-License-Identifier = "LicenseRef-Hoffmann-All-Rights-Reserved"
+
+# Taken from marola-dev/marola-research at 51fae22, whose code is MIT, by the same author.
+[[annotations]]
+path = ["scripts/md-quality.sh", "scripts/notes-check.sh", ".vale.ini", ".vale/styles/**", ".markdownlint-cli2.jsonc"]
+precedence = "override"
+SPDX-FileCopyrightText = ["2026 Matheus Hoffmann", "2026 marola.dev"]
+SPDX-License-Identifier = "MIT"

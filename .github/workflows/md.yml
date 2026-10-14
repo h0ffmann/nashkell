@@ -1,0 +1,26 @@
+# .md -- on each pull request and each push to main: the Markdown files with three analysers
+# (markdownlint-cli2, Vale, lychee for local links), the notes, and the licences. Each analyser is
+# first given a bad file and must refuse it. The tools come from site/flake.nix's `md` shell.
+name: .md
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: cachix/install-nix-action@v31
+      - run: nix develop --no-update-lock-file ./site#md --command scripts/md-quality.sh --self-test
+      - run: nix develop --no-update-lock-file ./site#md --command scripts/md-quality.sh
+      - name: the notes keep their rules
+        run: scripts/notes-check.sh
+      - name: every file has a licence and a copyright
+        run: nix develop --no-update-lock-file ./site#md --command reuse lint

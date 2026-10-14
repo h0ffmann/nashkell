@@ -283,22 +283,19 @@ fn latin() -> Element(msg) {
 
 fn faults() -> Element(msg) {
   section("faults", "red", [
-    p("read at commit " <> read_at <> ". a reader should know:"),
+    p("a reader should know:"),
     html.ul([], [
       html.li([], [
-        html.text(
-          "the README and the justfile name files that are not in the repository: the folder .githooks/, tools/biblical-commit.sh and golden/sample.png.",
-        ),
+        html.text("the Haskell pipeline has no tests."),
       ]),
       html.li([], [
         html.text(
           "the justfile says of itself, in Latin, that it was not run where it was written.",
         ),
       ]),
-      html.li([], [html.text("there are no tests, and two commits.")]),
       html.li([], [
         html.text(
-          "there is no licence file, so no licence is given. the code can be read; it cannot be reused.",
+          "the hook that checks the Latin of comments was missing, and was written again on 14 October 2026 from the README's own description of it. two recipes that called a script the repository never had were taken out.",
         ),
       ]),
       html.li([], [
@@ -364,6 +361,15 @@ fn record() -> Element(msg) {
       html.text(". the ideas behind it are in "),
       link(repo <> "/blob/main/notes/index.md", "three notes"),
       html.text(", one idea each."),
+    ]),
+    html.p([], [
+      html.text(
+        "all rights reserved: the code, the notes, this page and its drawings are ",
+      ),
+      link("https://h0ffmann.github.io/h0ffmann/", "matheus hoffmann"),
+      html.text("'s. read it, cite it; do not copy it. "),
+      link(repo <> "/blob/main/LICENSE", "the licence"),
+      html.text("."),
     ]),
     html.p([], [
       html.text(
@@ -444,6 +450,23 @@ pub fn document() -> Element(msg) {
         ),
       ]),
       html.link([attribute.rel("stylesheet"), attribute.href("style.css")]),
+      html.meta([a("property", "og:title"), attribute.content("nashkell")]),
+      html.meta([
+        a("property", "og:description"),
+        attribute.content("game theory, in Haskell, with Latin on top"),
+      ]),
+      html.meta([
+        a("property", "og:image"),
+        attribute.content("https://h0ffmann.github.io/nashkell/og.png"),
+      ]),
+      html.meta([
+        a("property", "og:url"),
+        attribute.content("https://h0ffmann.github.io/nashkell/"),
+      ]),
+      html.meta([
+        attribute.name("twitter:card"),
+        attribute.content("summary_large_image"),
+      ]),
     ]),
     html.body([], [view()]),
   ])

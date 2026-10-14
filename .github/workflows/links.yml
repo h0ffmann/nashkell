@@ -1,0 +1,30 @@
+# live links -- every web link of the Markdown files answers (`just md-quality --online`). On each
+# pull request and each push to main, so main does not fail on a link that a pull request passed,
+# and each Monday, because a page on the web can go away with no change here.
+name: live links
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-links-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  alive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: cachix/install-nix-action@v31
+      - run: nix develop --no-update-lock-file ./site#md --command scripts/md-quality.sh --online
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

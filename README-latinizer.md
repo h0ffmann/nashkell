@@ -32,7 +32,7 @@ Two git hooks fire at the commit/checkout boundary:
   clone`. Transforms the stored Latin back into English for your
   working tree.
 
-```
+```text
 you type English on disk
         |  git add / commit
         v

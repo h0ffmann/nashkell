@@ -1,0 +1,17 @@
+{
+  "title": "nashkell: game theory, in Haskell, with Latin on top",
+  "upload_type": "software",
+  "description": "<p>A pipeline in Haskell, with Polysemy effects, built around the letters that John Nash sent to the NSA in the 1950s: it reads a scan with Tesseract, asks a model if the reading looks broken, asks for notes on the hard passages, and checks each note against the literature, keeping apart 'no source found', 'contradicted' and 'likely fabricated'. Its comments are in Latin, and a git filter stores its names in Latin. With a website, notes and references.</p>",
+  "creators": [
+    { "name": "Hoffmann, Matheus", "orcid": "0009-0009-1056-7661" }
+  ],
+  "license": "other-closed",
+  "access_right": "closed",
+  "keywords": ["game theory", "Haskell", "Polysemy", "OCR", "obfuscation", "Latin", "John Nash", "reverse engineering"],
+  "related_identifiers": [
+    { "identifier": "10.5281/zenodo.23333656", "relation": "isSupplementTo", "scheme": "doi", "resource_type": "publication-book" },
+    { "identifier": "10.5281/zenodo.23352630", "relation": "isPartOf", "scheme": "doi", "resource_type": "other" },
+    { "identifier": "10.5281/zenodo.23352633", "relation": "references", "scheme": "doi", "resource_type": "publication-other" },
+    { "identifier": "10.5281/zenodo.23311208", "relation": "requires", "scheme": "doi", "resource_type": "software" }
+  ]
+}
